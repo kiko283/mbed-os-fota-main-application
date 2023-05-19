@@ -1,0 +1,59 @@
+{
+    "config": {
+        "flash_size": {
+            "help": "Total flash size on this device (in Bytes)",
+            "value": "256 * 1024"
+        },
+        "bootloader_size": {
+            "help": "The same as target.app_offset",
+            "value": "0x8000"
+        },
+        "fota_cloud_hostname": {
+            "help": "Hostname for the FOTA cloud server",
+            "value": "\"http://5.75.141.248\""
+        },
+        "trace-level": {
+            "help": "Options are TRACE_LEVEL_ERROR,TRACE_LEVEL_WARN,TRACE_LEVEL_INFO,TRACE_LEVEL_DEBUG",
+            "macro_name": "MBED_TRACE_MAX_LEVEL",
+            "value": "TRACE_LEVEL_INFO"
+        }
+    },
+    "target_overrides": {
+        "*": {
+            "target.network-default-interface-type": "CELLULAR",
+            "mbed-trace.enable": true,
+            "lwip.ipv4-enabled": true,
+            "ppp.ipv4-enabled": true,
+            "lwip.ipv6-enabled": false,
+            "ppp.ipv6-enabled": false,
+            "lwip.ethernet-enabled": false,
+            "lwip.ppp-enabled": true,
+            "lwip.tcp-enabled": true,
+            "platform.stdio-convert-newlines": true,
+            "platform.stdio-baud-rate": 115200,
+            "platform.default-serial-baud-rate": 115200,
+            "platform.stdio-buffered-serial": false,
+            "cellular.debug-at": false,
+            "cellular.use-apn-lookup": true,
+            "mbed-http.http-buffer-size": 4096,
+            "nsapi.default-cellular-sim-pin": null,
+            "nsapi.default-cellular-plmn": null,
+            "nsapi.default-cellular-apn": "\"de1.super\"",
+            "nsapi.default-cellular-username": null,
+            "nsapi.default-cellular-password": null
+        },
+        "NUCLEO_L433RC_P": {
+            "target.bootloader_img": "bootloader/bootloader.bin",
+            "target.app_offset": "0x8000",
+            "target.macros_add": ["UBX_MDM_SARA_R41XM", "UBX_MDM_SARA_R410M"],
+            "UBLOX_PPP.provide-default": true,
+            "UBLOX_PPP.tx": "PA_9",
+            "UBLOX_PPP.rx": "PA_10",
+            "target.components_add": ["SPIF"],
+            "spif-driver.SPI_MOSI": "PA_7",
+            "spif-driver.SPI_MISO": "PA_6",
+            "spif-driver.SPI_CLK":  "PA_5",
+            "spif-driver.SPI_CS":   "PA_4"
+        }
+    }
+}

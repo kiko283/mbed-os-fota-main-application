@@ -1,0 +1,8 @@
+.build
+.mbed
+projectfiles
+*.py*
+BUILD
+mbed-os
+mbed-http
+mbed-mqtt
